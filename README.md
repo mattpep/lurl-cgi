@@ -18,7 +18,12 @@ following format:
 key|destinationurl
 ```
 
-The key is specified as a query string parameter called `target`.
+The key is specified as a required query string parameter called `target`.
+
+There is an optional query string parameter called `show_invalid_key` which is
+a bit more verbose. It potentially leaks the fact there is an app running which
+responds to certain keys. This is likely useful only for debug purposes rather
+than in a general-purpose public-facing situation.
 
 # Webserver configuration
 
