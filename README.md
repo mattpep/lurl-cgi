@@ -11,12 +11,11 @@ it prevents the need to write a login or authentication system.
 # Configuration
 
 This script is run in a CGI context rather than as a resident server.
-It requires one environment variable `URL_FILE` which contains lines in the
-following format:
+It requires one environment variable `REDIS_DB` which points to the desired
+redis database (in the format used by the `redis` gem).
 
-```
-key|destinationurl
-```
+Key values are strings; no hashes, sets or lists needed.
+
 
 The key is specified as a required query string parameter called `target`.
 

@@ -1,14 +1,17 @@
 #!/usr/bin/ruby
 require 'cgi'
+require 'redis'
+
 cgi = CGI.new
+redis = Redis.new
+
 h = cgi.params
+url = redis.get h['target'].first
+
 show_invalid_key = h['show_invalid_key']
-urls = Hash[* IO.readlines(ENV['URL_FILE'])
-              .map { |s| s.chomp.split('|') }
-              .flatten]
-if urls.keys.include? h['target'].first
+if url
   puts 'Status: 302 Found'
-  puts "Location: #{ urls[h['target'].first] }"
+  puts "Location: #{ url }"
   puts
 elsif show_invalid_key.any?
   puts 'Status: 404 Not Found'
