@@ -18,6 +18,7 @@ elsif show_invalid_key.any?
   print "Content-type: text/html\n\n"
   print "<html><body>URL key #{ h['target'].first } invalid </body></html>\n"
 else
+  puts 'Status: 404 Not Found'
   print "Content-type: text/html\n\n"
   print "<html><body>Not found</body></html>\n"
 end
